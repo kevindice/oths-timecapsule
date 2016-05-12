@@ -1,0 +1,333 @@
+/*-------------------------
+    Simple reset
+--------------------------*/
+
+
+*{
+    margin:0;
+    padding:0;
+}
+
+
+/*-------------------------
+    General Styles
+--------------------------*/
+
+
+html{
+ /* IE10 Consumer Preview */ 
+background-image: -ms-radial-gradient(center, circle farthest-corner, #000080 0%, #000040 100%);
+
+/* Mozilla Firefox */ 
+background-image: -moz-radial-gradient(center, circle farthest-corner, #000080 0%, #000040 100%);
+
+/* Opera */ 
+background-image: -o-radial-gradient(center, circle farthest-corner, #000080 0%, #000040 100%);
+
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(radial, center center, 0, center center, 433, color-stop(0, #000080), color-stop(1, #000040));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-radial-gradient(center, circle farthest-corner, #000080 0%, #000040 100%);
+
+/* W3C Markup, IE10 Release Preview */ 
+background-image: radial-gradient(circle farthest-corner at center, #000080 0%, #000040 100%);
+ 
+    min-width: 300px;
+    min-height:700px;
+}
+
+body{
+    font:15px/1.3 Arial, sans-serif;
+    color: #4f4f4f;
+}
+
+a, a:visited {
+    outline:none;
+    color:#389dc1;
+    margin-bottom: 15px;
+}
+
+a:hover{
+    text-decoration:none;
+}
+
+section, footer, header, aside{
+    display: block;
+}
+
+
+/*----------------------------
+    The file upload form
+-----------------------------*/
+
+
+#upload{
+    font-family:'PT Sans Narrow', sans-serif;
+    background-color:#373a3d;
+
+    background-image:-webkit-linear-gradient(top, #373a3d, #313437);
+    background-image:-moz-linear-gradient(top, #373a3d, #313437);
+    background-image:linear-gradient(top, #373a3d, #313437);
+
+    width:300px;
+    padding:30px;
+    padding-bottom: 5px;
+    border-radius:3px;
+
+    margin:75px auto 100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#upload label{
+    margin-top: 5px;
+    display: block;
+    color: white;
+}
+
+#upload label input{
+    display: block;
+}
+
+#upload p{
+    color: #ccc;
+}
+
+#drop{
+    background-color: #2E3134;
+    padding: 40px 50px;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    border: 20px solid rgba(0, 0, 0, 0);
+    border-radius: 3px;
+    border-image: url('../img/border-image.png') 25 repeat;
+    text-align: center;
+    text-transform: uppercase;
+
+    font-size:16px;
+    font-weight:bold;
+    color:#febd15;
+}
+
+#drop a{
+    background-color:#007a96;
+    padding:12px 26px;
+    color:#fff;
+    font-size:14px;
+    border-radius:2px;
+    cursor:pointer;
+    display:inline-block;
+    margin-top:12px;
+    line-height:1;
+}
+
+#drop p, #info p{
+    color: #888;
+}
+
+#info{
+    padding-bottom: 15px;
+}
+
+#drop a:hover{
+    background-color:#0986a3;
+}
+
+#drop input{
+    display:none;
+}
+
+#drop input[type="text"]{
+    display: block;
+}
+
+#upload ul{
+    list-style:none;
+    margin:0 -30px;
+    border-top:1px solid #2b2e31;
+    border-bottom:1px solid #3d4043;
+}
+
+#upload ul li{
+
+    background-color:#333639;
+
+    background-image:-webkit-linear-gradient(top, #333639, #303335);
+    background-image:-moz-linear-gradient(top, #333639, #303335);
+    background-image:linear-gradient(top, #333639, #303335);
+
+    border-top:1px solid #3d4043;
+    border-bottom:1px solid #2b2e31;
+    padding:15px;
+    height: 52px;
+
+    position: relative;
+}
+
+#upload ul li input{
+    display: none;
+}
+
+#upload ul li p{
+    width: 144px;
+    overflow: visible;
+    white-space: nowrap;
+    color: #EEE;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    left: 100px;
+}
+
+#upload ul li i{
+    font-weight: normal;
+    font-style:normal;
+    color:#7f7f7f;
+    display:block;
+}
+
+#upload ul li canvas{
+    top: 15px;
+    left: 32px;
+    position: absolute;
+}
+
+#upload ul li span{
+    width: 15px;
+    height: 12px;
+    background: url('../img/icons.png') no-repeat;
+    position: absolute;
+    top: 34px;
+    right: 33px;
+    cursor:pointer;
+}
+
+#upload ul li.working span{
+    height: 16px;
+    background-position: 0 -12px;
+}
+
+#upload ul li.error p{
+    color:red;
+}
+
+
+/*----------------------------
+    The Demo Footer
+-----------------------------*/
+
+
+footer{
+    background-color: #080808;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0,0,0,0.4);
+    height: 40px;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 100000;
+}
+
+footer h2{
+    font-size: 14px;
+    font-weight: normal;
+    position: absolute;
+    top:0;
+    left: 50%;
+    bottom:0;
+    margin-left: -420px;
+    padding:13px 20px 0;
+    border:1px solid #000;
+    border-width:0 1px;
+    background-color:rgba(0,0,0,0.6);
+    box-shadow:0 0 5px #000 inset;
+    line-height: 1;
+    margin-top: 0;
+}
+
+footer h2 a{
+    color: #EEEEEE !important;
+    text-decoration:none !important;
+}
+
+footer h2 i{
+    font-style:normal;
+    color:#888;
+}
+
+#tzine-download{
+    opacity:0.9;
+    background-color:#257691;
+    font-size:11px;
+    text-align:center;
+    text-transform:uppercase;
+    width:150px;
+    height:28px;
+    line-height:28px;
+    text-decoration:none !important;
+
+    display: inline-block;
+    border-radius: 2px;
+    color: #fff !Important;
+    font-weight: bold;
+    box-shadow: 0 -1px 2px #1e5e74 inset;
+
+    border-top:1px solid #26849c;
+
+    text-shadow:1px 1px 1px #1e6176;
+    margin-top:6px;
+}
+
+#tzine-download:hover{
+    opacity:1;
+}
+
+#tzine-actions{
+    position:absolute;
+    top:0;
+    width:500px;
+    right:50%;
+    margin-right:-420px;
+    text-align:right;
+}
+
+#tzine-actions iframe{
+    display: inline-block;
+    height: 21px;
+    width: 95px;
+    position: relative;
+    float: left;
+    margin-top: 11px;
+}
+
+#file{
+    display: none;
+}
+
+h1{
+    color: #febd15;
+}
+
+input{
+    font-size: 0.875rem;
+    height: 1.3125rem;
+    padding: 0.5rem;
+}
+
+.hide label{
+    display: none !important;
+}
+
+#android-message{
+    display: block;
+    background: #ff0000;
+    color: #ffffff;
+}
+
+@media only screen and (min-device-width : 600px) and (min-width: 600px) {
+    #android-message{
+        display: none;
+    }
+}

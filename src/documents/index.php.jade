@@ -1,0 +1,257 @@
+---
+title: "OTHS Class of 2014 Time Capsule"
+layout: "default"
+isPage: true
+---
+- var scripts = getBlock('scripts')
+- var styles = getBlock('styles')
+- scripts.add(["bower_components/foundation/js/foundation.min.js", "validate-jquery-plugin.js", "scripts/app.js", "scripts/script.js", "scripts/jquery-scrollto.js", "https://apis.google.com/js/plusone.js"])
+- styles.add(["/styles/app.css", "/styles/style.css"])
+- var urlvariable = site.url
+
+| <? error_reporting(E_ALL); ini_set('display_errors', 1); ?>
+doctype html
+html.no-js(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title!= getPreparedTitle()
+    != getBlock('meta').toHTML()
+    != styles.toHTML()
+  
+    script(src="bower_components/modernizr/modernizr.js")
+    script(src="bower_components/jquery/dist/jquery.min.js")
+
+  body
+    #fb-root
+    script.
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '501750569947339',
+          status     : true,
+          xfbml      : true
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+
+    nav.top-bar(data-topbar)
+      ul.title-area
+        li.name
+          h1: a(href="http://othstimecapsule.us/")= document.title
+      section.top-bar-section.hide-for-small-only
+        ul.right
+          li: a(href="#", data-reveal-id="privacyModal").nav Privacy Policy
+          li: a(href="#", data-reveal-id="aboutModal").nav About
+          li: a(href="#", data-reveal-id="socialModal").nav Share!!
+
+    img(src="images/mobile-logo.png").mobile-logo.show-for-small-only
+
+    #aboutModal.reveal-modal(data-reveal)
+      h2 About the Time Capsule
+
+      p As we (your class officers) started coming up with ideas to help us remember our senior year, we settled on a time capsule.  The administration didn't want us to bury a physical one...who wants to dig a hole anyway?...so we've made a digital one.  All you have to do is answer a few questions about you and your life in 2014, upload some pictures, take a short video (optional), upload your jam, and that's it.  Tempting as it may be, don't just take selfies. Take pictures with those you care about:  friends, teachers, anyone who has been important in your life up to this point.  Let's make an awesome time capsule!
+
+      p *If you've already submitted stuff and want to add more pictures and video, click the green "Add more pictures!" button to go to the uploader page.
+      a.close-reveal-modal &#215;
+
+    #privacyModal.reveal-modal(data-reveal)
+      h2 Privacy Policy
+      p The data you submit will only be seen by your class officers and the website administrator, Kevin Dice.  Your info will be secured until our 20th class reunion at which point it will be opened to the class for viewing as well as for reminiscing, nostalgic longing, your general amusement, and/or the mocking of your children.  Thanks for your cooperation, OTHS.
+      a.close-reveal-modal &#215;
+
+    #socialModal.reveal-modal(data-reveal)
+      h2 Tell Someone About This!
+      h3 Facebook
+      | <div class="fb-like" data-href="http://othstimecapsule.us/" data-width="200" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">Like button blocked by school</div><br><br><br>
+      p: a(href="https://www.facebook.com/sharer/sharer.php?u=http://othstimecapsule.us/").button.large.darkblue Share on Facebook
+      h3 Twitter
+      | <a href="https://twitter.com/share" data-url="http://othstimecapsule.us/" data-hashtags="OTHSTimeCapsule, OTHSSeniors2014" class="twitter-share-button" data-lang="en">Tweet</a><br><br>
+      a(href="https://twitter.com/home?status=Check%20out%20the%20senior%20time%20capsule!%20%23OTHSTimeCapsule%20%23OTHS%20%23OTHSSeniors%0Ahttp://othstimecapsule.us/").button.large Share on Twitter
+      p: em(style="font-size: 1.3rem;") #OTHSTimeCapsule
+      h3 Google+
+      g:plusone
+      br
+      br
+      a(href="https://plus.google.com/share?url=http://othstimecapsule.us/").button.large.alert Google+
+      a.close-reveal-modal &#215;
+    
+    #intro
+      ul.button-group
+        li: a(href="#", data-reveal-id="aboutModal").button.gold.show-for-small-only.small About
+        li: a(href="#", data-reveal-id="privacyModal").button.gold.show-for-small-only.small Privacy Policy
+      .row
+        .medium-7.medium-push-5.columns
+          h1 Let's make a time capsule.
+          p While we may not be allowed to bury a physical time capsule on campus, we're certainly allowed to make a digital one. All you have to do is answer a few questions about your life in general and then upload a short video. In 20 years, we'll send you your data so your children can make fun of you and your stone-age technology. Trust us, it will be fun.
+          .row
+            .medium-6.large-6.columns
+              a(href="#get-started" onclick="document.getElementById('personal-info').style.display='block'; $('#personal-info').ScrollTo({duration: 1000, easing: 'swing'}); document.getElementById('footer1').style.display='none'; document.getElementById('footer2').style.display='block'").button.large.gold Get Started!
+            .medium-6.large-6.columns
+              a(href="#" data-reveal-id="socialModal").button.large#share_button Share!
+          .row
+            .medium-6.large-6.columns
+              p Already filled out the time capsule?...
+              a(href="pics").button.success.large Add more pictures!
+            .medium-6.large-6.columns
+              .panel.counting: h3
+                | <? print strval(100 + count(scandir('/home/kevin/timecapsule/out/uploads'))) . " uploads and counting."; ?>
+          h3.hashtag #OTHSTimeCapsule
+          .fb-background.radius
+            | <div class="fb-like" data-href="http://othstimecapsule.us/" data-width="200" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+            .wrap(style="padding-top: 9px;")
+              | <a href="https://twitter.com/share" data-url="http://othstimecapsule.us/" data-hashtags="OTHSTimeCapsule, OTHSSeniors2014" class="twitter-share-button" data-lang="en">Tweet</a>
+              | <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            .wrap(style="padding-top: 9px;")
+              .g-plusone(data-size="medium")
+        .medium-5.medium-pull-7.columns
+          img(src="images/timecapsule.gif")
+        
+    #footer1
+      != partial('footer.html.jade')
+
+    #personal-info
+      .row
+        .medium-6.columns
+          h1 Who are you?
+          p We don't mean to pry or anything, but we need to have some way of contacting you in 20 years.  We're asking for everything so you'll be easier to find, but your name and student number are all that's required.
+          #contact_form
+            form(method="post", enctype="multipart/form-data", name="form1")#form1
+              label First Name 
+                small required
+              input(type="text", name="firstName", placeholder="").required#fir0
+              //- small.error First name is required and can only contain letters
+              label Last Name 
+                small required
+              input(type="text", name="lastName", placeholder="").required#las0
+              //- small.error Last name is required and can only contain letters
+              label Student Number 
+                small required
+              input(type="text", name="studentNumber", placeholder="214xxx", size="6").required.studentnumber#stu0
+              //- small.error Student number is required and should be in the form "214xxx"
+              label Phone Number
+              input(type="text", name="phone", placeholder="618-555-1234")
+              label Email Address
+              input(type="text", name="email", placeholder="me@one-month-till-graduation.com")
+              .row
+                .small-6.columns
+                  input(type="submit", value="Next ->").button.large.gold.submit_go#submit_1
+                .small-6.columns
+                  h4.steps Step 1 of 4
+              #message1.alert-box.success.round Success!!
+        .medium-6.medium-centered.large-uncentered.columns
+          img(src="images/big_o.png")
+    #footer2
+      != partial('footer.html.jade')
+
+    #questions
+      .row
+        .medium-6.columns.push-6
+          h1 Question Time...
+          p Take a second to answer a few questions about you, O'Fallon, and your life in 2014.
+          form(method="post", enctype="multipart/form-data", name="form2")#form2
+            label 1. What are your hobbies?  What extracurricular activities and/or sports are you involved in?
+              textarea(name="question1", placeholder="...basket weaving, of course")
+            label 2. Who is your current crush, or boyfriend/girlfriend?
+              textarea(name="question2", placeholder="")
+            label 3. Who are your best friends?
+              textarea(name="question3", placeholder="")
+            label 4. What is your twitter name?
+              textarea(name="question4", placeholder="@swagmonster")
+            label 5. What are you wearing right now?
+              textarea(name="question5", placeholder="thanks for asking...")
+            label 6. Who do you want to marry?
+              textarea(name="question6", placeholder="that's a deep question")
+            label 7. When do you think your hair will turn gray?
+              textarea(name="question7", placeholder="")
+            label 8. What is the craziest thing you have ever done?...YOLO
+              textarea(name="question8", placeholder="YOLO")
+            label 9. What has been your favorite memory at OTHS?
+              textarea(name="question9", placeholder="what happens at OTHS stays at OTHS")
+            label 10. What is the best thing that has happened to you recently?
+              textarea(name="question10", placeholder="")
+            label 11. What is the worst thing that has happened to you recently?
+              textarea(name="question11", placeholder="")
+            label 12. What is something you are really looking forward to right now?
+              textarea(name="question12", placeholder="duhh...graduating")
+            label 13. Where do you see yourself in 10 years?
+              textarea(name="question13", placeholder="probably 10 years older than I am now...")
+            label 14. Where do you see yourself in 20 years?
+              textarea(name="question14", placeholder="see question 13.")
+            input(type="hidden", name="first", value="")#fir1
+            input(type="hidden", name="last", value="")#las1
+            input(type="hidden", name="student_number", value="")#stu1
+            .row
+              .small-6.columns
+                input(type="submit", value="Submit").button.large.darkblue.submit_go#submit_2
+              .small-6.columns
+                h4.steps Step 2 of 4
+            #message2.alert-box.success.round Success!
+        .medium-6.columns.pull-6
+          img(src="images/questions.png")
+    #footer3
+      != partial('footer.html.jade')
+
+    #favorite
+      .row
+        .medium-6.columns
+          h1 What is your favorite...?
+          p The title pretty much says it all.  We want to know what is your favorite movie, song, book, band, etc.  Just fill in the blank...  If you don't have one, then just leave it blank.
+          form(method="post", enctype="multipart/form-data", name="form3")#form3
+            label Movie
+              input(type="text", name="1-movie")
+            label Song
+              input(type="text", name="2-song")
+            label Book
+              input(type="text", name="3-book")
+            label Band/Singer
+              input(type="text", name="4-band")
+            label TV Show
+              input(type="text", name="5-tvshow")
+            label Restaurant
+              input(type="text", name="6-restaurant")
+            label Hangout
+              input(type="text", name="7-hangout")
+            label Food
+              input(type="text", name="8-food")
+            label Subject/Class in school
+              input(type="text", name="9-subject")
+            input(type="hidden", name="first", value="")#fir2
+            input(type="hidden", name="last", value="")#las2
+            input(type="hidden", name="student_number", value="")#stu2
+            .row
+              .small-6.columns
+                input(type="submit", value="Submit").button.large.darkblue.submit_go#submit_3
+              .small-6.columns
+                h4.steps Step 3 of 4
+            #message3.alert-box.success.round Success!
+        .medium-6.columns
+          img(src="images/like.png")
+    #footer4
+      != partial('footer.html.jade')
+
+    #pictures-section
+      .row
+        .medium-6.columns
+          h1 Almost Done... Now for some pictures, videos, and music
+          p Take a second to snap some pictures and videos of yourself, your friends, and anyone and anything that is important to you.  There's no limit on the number of files you can upload.  Be sure to take a few pictures of your technology.  We'll all be laughing at it in 20 years.  You can also upload audio files, so pick a few songs you like and upload them as well.  Your children will be very interested (maybe...ok, probably not) to hear your jams in 20 years, so don't disappoint them.  You can also make audio recordings.  Here's the link... have fun.
+        .medium-6.columns
+          img(src="images/camera.png")
+          form(method="post", enctype="multipart/form-data", name="form4", action="pics/")
+            input(type="hidden", name="first", value="")#fir3
+            input(type="hidden", name="last", value="")#las3
+            input(type="hidden", name="student_number", value="")#stu3
+            .row
+              .small-6.columns
+                input(type="submit", name="submit", value="Go!").button.large.gold
+              .small-6.columns
+                h4.steps Step 4 of 4
+    #footer5
+      != partial('footer.html.jade')
+  != scripts.toHTML()

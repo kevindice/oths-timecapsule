@@ -1,0 +1,4 @@
+AddType application/x-httpd-php .html
+
+RewriteEngine On
+RewriteRule ^/pics$ /pics.php [L]

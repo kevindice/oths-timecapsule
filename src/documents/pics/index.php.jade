@@ -1,0 +1,50 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="initial-scale=1")
+    title OTHS Time Capsule Photo Upload
+    link(href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700", rel='stylesheet')
+    link(href="../assets/css/style.css", rel="stylesheet")
+  body
+    | <? if(isset($_POST['first']) && isset($_POST['last']) && isset($_POST['student_number'])){
+    | $first = $_POST['first'];
+    | $last = $_POST['last'];
+    | $student_number = $_POST['student_number'];
+    | $show_form = 'hidden';
+    | $display='hide';
+    | $visible = 'none';
+    | }
+    | else{
+    | $show_form = 'text';
+    | $first = '';
+    | $last = '';
+    | $student_number = '';
+    | $visible = 'block';
+    | }
+    | 
+    | ?>
+    form#upload(method="post", action="../upload.php", enctype="multipart/form-data", class!="nothing <? echo $display; ?>")
+      h1 Upload Photos, Videos & Audio
+      #android-message(style!="display:<? print $display; ?>;") Some older Android phones close the web browser app when you open the gallery app, causing the photo uploading to not work.  If this happens to you, use a computer and go to http://othstimecapsule.us/pics
+      p(style!="display:<? echo $visible; ?>") Enter your actual student number or it won't work.
+      label First Name
+        input(type!="<? echo $show_form; ?>", name="first", value!="<? echo $first; ?>")
+      label Last Name
+        input(type!="<? echo $show_form; ?>", name="last", value!="<? echo $last; ?>")
+      label Student Number
+        input(type!="<? echo $show_form; ?>", name="student_number", value!="<? echo $student_number; ?>")
+      #drop Drop Here
+        input(type="file", name="upl", multiple=true)#file
+        a Browse
+      #info
+        p Supported Formats:  .png, .jpg, .gif, .mp4, .3gp, .ogg, .mp3, .jpeg, .wmv, .wma, .wav, .amr, .flv
+        p Single File Size Limit: 50Mb (approx 5min video)
+      ul
+  <!-- JavaScript Includes -->
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")
+  script(src="../assets/js/jquery.knob.js")
+  script(src="../assets/js/jquery.ui.widget.js")
+  script(src="../assets/js/jquery.iframe-transport.js")
+  script(src="../assets/js/jquery.fileupload.js")
+  script(src="../assets/js/script.js")

@@ -1,31 +1,235 @@
 @import "settings";
 @import "../../files/bower_components/foundation/scss/foundation";
 
-
-header {
-  @include grid-row;
-
-  .logo  { @include grid-column($columns:3, $center:true); }
-  padding-bottom: em-calc(10px);
+@font-face {
+    font-family: 'aleobold';
+    src: url('../fonts/aleo-bold-webfont.eot');
+    src: url('../fonts/aleo-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/aleo-bold-webfont.woff') format('woff'),
+         url('../fonts/aleo-bold-webfont.ttf') format('truetype'),
+         url('../fonts/aleo-bold-webfont.svg#aleobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
 
 }
 
+#message1, #message2, #message3, #message4 { 
+    display:none; 
+    font-size:24px; 
+    font-weight:bold;
+}
 
-.main-content {
-  @include grid-row;
-
-  aside  {
-    @include grid-column($columns:6);
-    // @media #{$medium-up} {
-    //   @include grid-column($columns:3);
-    // }
+.top-bar{
+  background: #111;
+  height: 35px;
+  line-height: 35px;
+  .name{
+    height: 35px;
+    margin-top: -4px;
   }
-
-  article  {
-    @include grid-column($columns:6);
-    // @media #{$medium-up} {
-    //   @include grid-column($columns:8, $offset: 1);
-    // }
+  .top-bar-section{
+    ul {background: #111;
+      li a{
+        line-height: 35px;
+      }
+    }
   }
+}
 
+a.nav{
+  line-height: 35px !important;
+  background-color: #111 !important;
+}
+
+#intro, #personal-info, #questions, #pictures-section, #favorite, #video-section{
+  padding-top: 40px;
+  padding-bottom: 40px;
+  min-height: 91%;
+  h1, p, label{
+    color: #e9e9e9;
+  }
+  h1{
+    font-family: aleobold, helvetica, sans-serif;
+  }
+}
+
+#personal-info, #questions, #pictures-section, #video-section, #favorite, #footer{
+  display: none;
+}
+
+#intro{
+  background: #061F70;
+  margin-top: -35px;
+  padding-top: 35px;
+  .row{
+    padding-top: 25px;
+    @media #{$small-only} {
+      padding-top: 0px;
+	}
+  }
+}
+
+.button-group{
+  margin-left: 15px;
+}
+
+#personal-info{
+  background: #222;
+}
+
+#questions{
+  background: #febd15;
+  h1, p, label{
+    color: #000;
+  }
+}
+
+#pictures-section{
+  background: url('../images/argyle.png');
+}
+
+#favorite{
+  background: #008CBA;
+  label{
+    font-weight: bold;
+  }
+}
+
+#video-section{
+  background: url('../images/wood_planks.jpg');
+  p{
+    color: #000;
+  }
+  h1{
+    color: #000;
+    text-shadow: 4px 3px 0px #fff, 9px 8px 0px rgba(0,0,0,0.15);
+  }
+}
+
+#footer1, #footer2, #footer3, #footer4, #footer5{
+  background: #111;
+  min-height: 9%;
+  width: 100%;
+  margin-top: 0px;
+  display: none;
+  p{
+    color: #fff;
+    margin-top: .6rem;
+    margin-bottom: .6rem;
+  }
+  .row{
+    padding: 0px;
+  }
+}
+
+#footer1{
+  display: block;
+}
+
+.top-bar .name h1 a{
+  min-width: 80%;
+}
+
+h1.mobile-title{
+  display: block;
+  background-color: #111;
+  color: #e9e9e9;
+  font-size: 1.0625rem;
+  line-height: 35px;
+  margin: 0px;
+  padding-left: 10px;
+  a{
+    color: #e9e9e9;
+    font-size: 1.0625rem;
+  }
+}
+
+.gold{
+  background-color: #febd15;
+  border-color: #de9d10;
+  color: #000;
+  font-weight: bold;
+}
+
+.gold:hover, .gold:focus{
+  background-color: #de9d10;
+  border-color: #bf7007;
+  color: #000;
+}
+
+.black{
+  background-color: #000;
+  border-color: #111;
+  color: #fff;
+}
+
+.black:hover, .black:focus{
+  background-color: #080808;
+  border-color: #222;
+  color: #fff;
+}
+
+.darkblue{
+  background-color: #0C1872;
+  border-color: #111;
+  color: #fff;
+}
+
+.darkblue:hover, .darkblue:focus{
+  background-color: #0F1F92;
+  border-color: #222;
+  color: #fff;
+}
+
+h3.hashtag{
+  color: #e9e9e9;
+  font-style: oblique;
+}
+
+.mobile-logo{
+  position: absolute;
+  top: 35px;
+  right: 15px;
+}
+
+.personal-info label{
+  color: #e9e9e9;
+}
+
+.fb-background{
+  background: #999;
+  border-radius: 10px;
+  width: 200px;
+  padding: 10px;
+}
+
+label.error{
+  background: #f04124;
+  color: #fff;
+  font-weight: bold;
+  padding: 5px;
+}
+
+/*@media only screen and (max-width:40em)*/
+dialog, .reveal-modal {
+  height: auto;
+  min-height: 100vh;
+}
+
+h4.steps{
+  display: block;
+  border: 5px solid #999;
+  border-radius: 40px;
+  background: #444;
+  color: #fff;
+  padding: 7px;
+  padding-left: 14px;
+}
+
+.counting{
+  border-radius: 30px;
+}
+
+.button.success{
+  color: black;
 }

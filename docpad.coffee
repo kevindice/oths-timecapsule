@@ -13,35 +13,32 @@ docpadConfig = {
     # Specify some site properties
     site:
       # The production url of our website
-      url: "http://website.com"
+      url: "http://othstimecapsule.us/"
 
       # Here are some old site urls that you would like to redirect from
-      oldUrls: [
-        'www.website.com',
-        'website.herokuapp.com'
-      ]
+      oldUrls: []
 
       # The default title of our website
-      title: "Your Website"
+      title: "OTHS Time Capsule"
 
       # The website description (for SEO)
       description: """
-        When your website appears in search results in say Google, the text here will be shown underneath your website's title.
+        While we may not be allowed to bury a physical time capsule on campus, we're certainly allowed to make a digital one. All you have to do is answer a few questions about your life in general and then upload a short video. In 20 years, we'll send you your data so your children can make fun of you and your stone-age technology. Trust us, it will be fun.
         """
 
       # The website keywords (for SEO) separated by commas
       keywords: """
-        place, your, website, keywoards, here, keep, them, related, to, the, content, of, your, website
+        o'fallon, township, high, school, senior, class, 2014, time, capsule, app, pictures, videos, questions, twenty, years
         """
 
       # The website author's name
-      author: "Your Name"
+      author: "Kevin Dice"
 
       # The website author's email
-      email: "your@email.com"
+      email: "kevin.dice1@gmail.com"
 
       # Your company's name
-      copyright: "© Your Company 2012"
+      copyright: "© Kevin Dice 2014"
 
 
     # Helper Functions
